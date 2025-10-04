@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router";
+import "./home.css";
 import type { Route } from "./+types/home";
 import type { Post } from "~/types";
 import { BlogPosts } from "~/components/blog-posts";
