@@ -6,8 +6,14 @@
 !.env.example
 /node_modules/
 /.github/instructions/*
+.dev.vars
+package-lock.json
 
-.env*
+
+.mf
+.wrangler
+.dev.vars*
+worker-configuration.d.ts
 
 # Bun
 bun.lock

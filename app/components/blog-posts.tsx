@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+
 
 type Post = {
   title: string;
@@ -9,7 +9,6 @@ type Post = {
 
 type BlogPostsProps = {
   posts: Post[];
-  cardSurfaceStyle?: CSSProperties;
 };
 
 const formatDate = (dateString: string) => {
@@ -22,9 +21,9 @@ const formatDate = (dateString: string) => {
   }).format(date);
 };
 
-export function BlogPosts({ posts, cardSurfaceStyle }: BlogPostsProps) {
+export function BlogPosts({ posts }: BlogPostsProps) {
   return (
-    <section className="card-surface rounded-md p-6 shadow-lg" style={cardSurfaceStyle}>
+    <section className="card-surface rounded-md p-6 shadow-lg">
       <h2 className="mb-6 text-2xl font-bold text-white">Latest Blog Posts</h2>
       <div className="space-y-6">
         {posts.map((post) => (

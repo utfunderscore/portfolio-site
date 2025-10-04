@@ -1,12 +1,8 @@
 import type { CSSProperties } from "react";
 
-type ContactCardProps = {
-  cardSurfaceStyle?: CSSProperties;
-};
-
-export function ContactCard({ cardSurfaceStyle }: ContactCardProps) {
+export function ContactCard() {
   return (
-    <section className="card-surface rounded-md p-6 shadow-lg" style={cardSurfaceStyle}>
+    <section className="card-surface rounded-md p-6 shadow-lg">
       <h3 className="mb-4 text-lg font-semibold text-white">Contact</h3>
       <div className="space-y-3">
         <div className="flex items-center gap-3">

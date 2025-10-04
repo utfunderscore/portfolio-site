@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+
 
 type ProjectSummary = {
   name: string;
@@ -11,7 +11,6 @@ type ProjectSummary = {
 
 type TopProjectsProps = {
   projects: ProjectSummary[];
-  cardSurfaceStyle?: CSSProperties;
   languageColors: Record<string, string>;
 };
 
@@ -32,9 +31,9 @@ const toPascalCase = (value: string) => {
     .join("");
 };
 
-export function TopProjects({ projects, cardSurfaceStyle, languageColors }: TopProjectsProps) {
+export function TopProjects({ projects, languageColors }: TopProjectsProps) {
   return (
-    <section className="card-surface rounded-md p-6 shadow-lg" style={cardSurfaceStyle}>
+    <section className="card-surface rounded-md p-6 shadow-lg">
       <h3 className="mb-4 text-lg font-semibold text-white">Top Projects</h3>
       <div className="space-y-4">
         {projects.map((project) => {

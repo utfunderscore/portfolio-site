@@ -1,14 +1,9 @@
-import type { CSSProperties } from "react";
 import { skills, skillStyles } from "~/lib/constants";
 import { hexToRgba } from "~/lib/utils";
 
-type ProfileCardProps = {
-  cardSurfaceStyle?: CSSProperties;
-};
-
-export function ProfileCard({ cardSurfaceStyle }: ProfileCardProps) {
+export function ProfileCard() {
   return (
-    <section className="card-surface rounded-md p-6 shadow-lg" style={cardSurfaceStyle}>
+    <section className="card-surface rounded-md p-6 shadow-lg">
       <h1 className="mb-4 text-3xl font-bold text-white">Connor Young</h1>
       <p className="mb-6 leading-relaxed text-gray-300">
         Backend software developer focusing on scalable infrastructure for game services. 
