@@ -1,0 +1,61 @@
+export const repoUrls = [
+  "https://github.com/utfunderscore/matchmaker-rs",
+  "https://github.com/utfunderscore/ui-toolkit",
+  "https://github.com/utfunderscore/hermes",
+  "https://github.com/utfunderscore/loadbalancer-rs",
+  "https://github.com/utfunderscore/game",
+];
+
+export const languageColors: Record<string, string> = {
+  rust: "#dea584",
+  kotlin: "#a97bff",
+  java: "#b07219",
+  javascript: "#f1e05a",
+  typescript: "#3178c6",
+  python: "#3572a5",
+  go: "#00add8",
+  ruby: "#701516",
+  swift: "#ffac45",
+  php: "#4f5d95",
+  "c++": "#f34b7d",
+  "c#": "#178600",
+  "c": "#555555",
+  shell: "#89e051",
+  html: "#e34c26",
+  css: "#563d7c",
+  scala: "#c22d40",
+  dart: "#00b4ab",
+  elixir: "#6e4a7e",
+  sql: "#e38c00",
+  r: "#198ce7",
+  lua: "#000080",
+  svelte: "#ff3e00",
+  vue: "#41b883",
+  angular: "#c3002f",
+  "objective-c": "#438eff",
+  hcl: "#5c4ee5",
+};
+
+export const skills = [
+  "Java",
+  "Kotlin",
+  "Rust",
+  "Kubernetes",
+  "Linux",
+  "Spring Boot",
+  "gRPC",
+  "Python",
+  "Docker",
+];
+
+export const skillStyles: Record<string, { base: string; text: string }> = {
+  Java: { base: "#f89920", text: "#fefce8" },
+  Kotlin: { base: "#7f52ff", text: "#f5f3ff" },
+  Rust: { base: "#dea584", text: "#fff7ed" },
+  Kubernetes: { base: "#326ce5", text: "#e0f2fe" },
+  Linux: { base: "#fcc624", text: "#fefce8" },
+  "Spring Boot": { base: "#6db33f", text: "#ecfdf5" },
+  gRPC: { base: "#5c9f55", text: "#ecfdf5" },
+  Python: { base: "#3776ab", text: "#e0f2fe" },
+  Docker: { base: "#0db7ed", text: "#e0f2fe" },
+};
