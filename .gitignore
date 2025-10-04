@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.env.development
+.env.local
+.env.*
+!.env.example
+/node_modules/
+
+# Bun
+bun.lock
+
+# React Router
+/.react-router/
+/build/
