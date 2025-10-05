@@ -30,6 +30,26 @@ export async function loader({ context }: Route.LoaderArgs) {
 	return { projects };
 }
 
+export function meta() {
+	return [
+		{ title: "Connor Young - Backend Developer" },
+		{ name: "description", content: "Backend software developer focusing on scalable infrastructure for game services. Experience with backend services, matchmaking systems, and Kubernetes." },
+		
+		// Open Graph tags for Discord/Facebook
+		{ property: "og:title", content: "Connor Young - Backend Developer" },
+		{ name: "og:description", content: "Backend software developer focusing on scalable infrastructure for game services. Experience with backend services, matchmaking systems, and Kubernetes." },
+		{ property: "og:image", content: "/favicon.png" },
+		{ property: "og:url", content: "https://portfolio.utf.lol" },
+		{ property: "og:type", content: "website" },
+		
+		// Twitter Card tags
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: "Connor Young - Backend Developer" },
+		{ name: "twitter:description", content: "Backend software developer focusing on scalable infrastructure for game services. Experience with backend services, matchmaking systems, and Kubernetes." },
+		{ name: "twitter:image", content: "/favicon.png" },
+	];
+}
+
 function TitleBox() {
 	return (
 		<div className="title-box" box-="no-bottom" shear-="top">
