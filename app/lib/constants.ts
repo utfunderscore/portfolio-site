@@ -44,43 +44,7 @@ export type BlogPost = {
 	tags: string[];
 };
 
-export const blogPosts: BlogPost[] = [
-	{
-		slug: "getting-started-with-rust",
-		date: "2024-05-10",
-		title: "Getting Started with Rust",
-		summary: "A beginner's guide to setting up Rust and writing your first program.",
-		tags: ["Rust", "Tutorial"],
-	},
-	{
-		slug: "kubernetes-for-developers",
-		date: "2024-04-22",
-		title: "Kubernetes for Developers",
-		summary: "Learn how Kubernetes can simplify deployment and scaling for your applications.",
-		tags: ["Kubernetes", "DevOps"],
-	},
-	{
-		slug: "spring-boot-best-practices",
-		date: "2024-03-15",
-		title: "Spring Boot Best Practices",
-		summary: "Tips and tricks for building robust Spring Boot applications.",
-		tags: ["Java", "Spring Boot"],
-	},
-	{
-		slug: "grpc-vs-rest",
-		date: "2024-02-28",
-		title: "gRPC vs REST: Which Should You Choose?",
-		summary: "A comparison of gRPC and REST for building modern APIs.",
-		tags: ["API", "gRPC"],
-	},
-	{
-		slug: "docker-in-production",
-		date: "2024-01-12",
-		title: "Docker in Production",
-		summary: "Best practices for running Docker containers in production environments.",
-		tags: ["Docker", "DevOps"],
-	},
-];
+export const blogPosts: BlogPost[] = [];
 
 export type BadgeColors = {
 	backgroundColor: string;
