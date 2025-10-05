@@ -1,218 +1,276 @@
 @layer base, utils, components;
 
-
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
-@import '@webtui/css/base.css';
-@import '@webtui/css/utils/box.css';
-@import '@webtui/css/components/badge.css';
-@import '@webtui/css/components/separator.css';
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+@import "@webtui/css/base.css";
+@import "@webtui/css/utils/box.css";
+@import "@webtui/css/components/badge.css";
+@import "@webtui/css/components/separator.css";
 @import "tailwindcss";
+@import "@webtui/css/components/typography.css";
 
 /* body {
     background-color: black;
 } */
 
 @layer utils {
-    [box-='no-bottom'] {
-        position: relative;
-        isolation: isolate;
-        padding: 1lh 1ch;
+	[box-="no-bottom"] {
+		position: relative;
+		isolation: isolate;
+		padding: 1lh 1ch;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            width: calc(100% - 1ch - var(--box-border-width));
-            height: calc(100% - 1lh - var(--box-border-width));
-            border-top: solid var(--box-border-width) var(--box-border-color);
-            border-left: solid var(--box-border-width) var(--box-border-color);
-            border-right: solid var(--box-border-width) var(--box-border-color);
-            z-index: -1;
-        }
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			width: calc(100% - 1ch - var(--box-border-width));
+			height: calc(100% - 1lh - var(--box-border-width));
+			border-top: solid var(--box-border-width) var(--box-border-color);
+			border-left: solid var(--box-border-width) var(--box-border-color);
+			border-right: solid var(--box-border-width) var(--box-border-color);
+			z-index: -1;
+		}
 
-        /* Apply border radius to the inner and outer (if present) border */
-        &[box-='round'] {
-            &::before {
-                border-radius: var(--box-rounded-radius);
-            }
+		/* Apply border radius to the inner and outer (if present) border */
+		&[box-="round"] {
+			&::before {
+				border-radius: var(--box-rounded-radius);
+			}
 
-            &::after {
-                border-radius: calc(var(--box-rounded-radius) + 2px);
-            }
-        }
+			&::after {
+				border-radius: calc(var(--box-rounded-radius) + 2px);
+			}
+		}
 
-        /* Adds the second border to the element */
-        &[box-='double'] {
-            &::before {
-                border-width: var(--box-double-border-width);
-            }
+		/* Adds the second border to the element */
+		&[box-="double"] {
+			&::before {
+				border-width: var(--box-double-border-width);
+			}
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                translate: -50% -50%;
-                width: calc(100% - 1ch + var(--box-double-border-width) * 2);
-                height: calc(100% - 1lh + var(--box-double-border-width) * 2);
-                border: solid var(--box-double-border-width) var(--box-border-color);
-                z-index: -1;
-            }
-        }
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+				width: calc(100% - 1ch + var(--box-double-border-width) * 2);
+				height: calc(100% - 1lh + var(--box-double-border-width) * 2);
+				border: solid var(--box-double-border-width) var(--box-border-color);
+				z-index: -1;
+			}
+		}
 
-        /* Containment Variants */
-        &[shear-='both'] {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
+		/* Containment Variants */
+		&[shear-="both"] {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
 
-        &[shear-='top'] {
-            padding-top: 0;
-        }
+		&[shear-="top"] {
+			padding-top: 0;
+		}
 
-        &[shear-='bottom'] {
-            padding-bottom: 0;
-        }
-    }
+		&[shear-="bottom"] {
+			padding-bottom: 0;
+		}
+	}
 
-    [box-='no-left'] {
-        position: relative;
-        isolation: isolate;
-        padding: 1lh 1ch;
+	[box-="no-left"] {
+		position: relative;
+		isolation: isolate;
+		padding: 1lh 1ch;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            width: calc(100% - 1ch - var(--box-border-width));
-            height: calc(100% - 1lh - var(--box-border-width));
-            border-top: solid var(--box-border-width) var(--box-border-color);
-            border-bottom: solid var(--box-border-width) var(--box-border-color);
-            border-right: solid var(--box-border-width) var(--box-border-color);
-            z-index: -1;
-        }
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			width: calc(100% - 1ch - var(--box-border-width));
+			height: calc(100% - 1lh - var(--box-border-width));
+			border-top: solid var(--box-border-width) var(--box-border-color);
+			border-bottom: solid var(--box-border-width) var(--box-border-color);
+			border-right: solid var(--box-border-width) var(--box-border-color);
+			z-index: -1;
+		}
 
-        /* Apply border radius to the inner and outer (if present) border */
-        &[box-='round'] {
-            &::before {
-                border-radius: var(--box-rounded-radius);
-            }
+		/* Apply border radius to the inner and outer (if present) border */
+		&[box-="round"] {
+			&::before {
+				border-radius: var(--box-rounded-radius);
+			}
 
-            &::after {
-                border-radius: calc(var(--box-rounded-radius) + 2px);
-            }
-        }
+			&::after {
+				border-radius: calc(var(--box-rounded-radius) + 2px);
+			}
+		}
 
-        /* Adds the second border to the element */
-        &[box-='double'] {
-            &::before {
-                border-width: var(--box-double-border-width);
-            }
+		/* Adds the second border to the element */
+		&[box-="double"] {
+			&::before {
+				border-width: var(--box-double-border-width);
+			}
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                translate: -50% -50%;
-                width: calc(100% - 1ch + var(--box-double-border-width) * 2);
-                height: calc(100% - 1lh + var(--box-double-border-width) * 2);
-                border: solid var(--box-double-border-width) var(--box-border-color);
-                z-index: -1;
-            }
-        }
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+				width: calc(100% - 1ch + var(--box-double-border-width) * 2);
+				height: calc(100% - 1lh + var(--box-double-border-width) * 2);
+				border: solid var(--box-double-border-width) var(--box-border-color);
+				z-index: -1;
+			}
+		}
 
-        /* Containment Variants */
-        &[shear-='both'] {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
+		/* Containment Variants */
+		&[shear-="both"] {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
 
-        &[shear-='top'] {
-            padding-top: 0;
-        }
+		&[shear-="top"] {
+			padding-top: 0;
+		}
 
-        &[shear-='bottom'] {
-            padding-bottom: 0;
-        }
-    }
+		&[shear-="bottom"] {
+			padding-bottom: 0;
+		}
+	}
 }
 
 @layer base {
-    :root {
-        /* Default background color */
-        --background0: #000000;
-        /* Background levels 1-3 */
-        --background1: #ddd;
-        --background2: #bbb;
-        --background3: #999;
+	:root {
+		--font-size: 18px;
+		--font-family: "Geist Mono", monospace;
 
-        /* Default foreground color */
-        --foreground0: #ffffff;
-        /* Foreground levels 1-2 */
-        --foreground1: #444;
-        --foreground2: #888;
+		/* --line-height: 1.3; */
+		/* Font weight for bold text */
+		--font-weight-bold: 700;
+		/* Font weight for regular text */
+		--font-weight-normal: 400;
 
-        /* Border colors for various components/utils */
-        --box-border-color: var(--foreground0);
-        --table-border-color: var(--foreground0);
-        --separator-color: var(--foreground0);
-    }
+		/* Default background color */
+		--background0: #000000;
+		/* Background levels 1-3 */
+		--background1: #ddd;
+		--background2: #bbb;
+		--background3: #999;
+
+		/* Default foreground color */
+		--foreground0: #ffffff;
+		/* Foreground levels 1-2 */
+		--foreground1: #444;
+		--foreground2: #888;
+
+		/* Border colors for various components/utils */
+		--box-border-color: var(--foreground0);
+		--table-border-color: var(--foreground0);
+		--separator-color: var(--foreground0);
+	}
 }
 
-#island1 {
-    padding: 1ch;
+.island1 {
+	padding: 1ch;
 
-    .header {
-        margin-top: 2px;
-        margin-left: 1ch;
-    }
+	.header {
+		margin-top: 2px;
+		margin-left: 1ch;
+	}
 
-    #box-text {
-        padding: 1ch;
-    }
+	.box-text {
+		padding: 1ch;
+	}
 
-    #title-box {
-        padding-bottom: 3ch;
-    }
+	.title-box {
+		padding-bottom: 3ch;
+	}
 
-    #skills-box {
-        margin-top: -2.5ch;
-        padding-bottom: 3ch;
-    }
+	.skills-box {
+		margin-top: -2.5ch;
+		padding-bottom: 3ch;
+	}
 
-    #contact-box {
-        margin-top: -2.5ch;
-        padding-bottom: 3ch;
+	.contact-box {
+		margin-top: -2.5ch;
+		padding-bottom: 3ch;
 
-        .contact-icon {
-            padding-top: 1ch;
-        }
-    }
-
-
+		.contact-icon {
+			padding-top: 1ch;
+		}
+	}
 }
 
-#island2 {
-    padding: 1ch;
-
-    .header {
-        margin-top: 2px;
-        margin-left: 1ch;
-    }
-
-    #box-text {
-        padding: 1ch;
-    }
+.hexagon {
+	width: 60px;
+	height: 52px;
+	background: white;
+	border: 2px solid #333;
+	clip-path: polygon(
+		50% 0%,
+		85% 15%,
+		100% 50%,
+		85% 85%,
+		50% 100%,
+		15% 85%,
+		0% 50%,
+		15% 15%
+	);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
 }
 
+.hexagon:hover {
+	background: #f0f0f0;
+	border-color: #666;
+}
 
+.island2 {
+	padding: 1ch;
 
+	.header {
+		margin-top: 2px;
+		margin-left: 1ch;
+	}
 
-body {
-    font-family: 'Geist Mono', monospace;
+	.box-text {
+		padding: 1ch;
+	}
+}
+
+.blog-box {
+	body,
+	.row {
+		display: flex;
+		flex-direction: row;
+		flex: 1;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+}
+
+.island3 {
+	padding: 1ch;
+
+	.inside-projects {
+		padding: 1ch;
+	}
+
+	.header {
+		margin-top: 2px;
+		margin-left: 1ch;
+	}
+
+	.box-text {
+		padding: 1ch;
+	}
 }

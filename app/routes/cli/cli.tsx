@@ -1,149 +1,296 @@
 import "./cli.css";
-import { skills, skillStyles } from "~/lib/constants";
+import {
+	ExternalLink,
+	Github,
+	Linkedin,
+	Mails,
+	Octagon,
+	Star,
+} from "lucide-react";
+import GitHubCalendar from "react-github-calendar";
+import { useLoaderData } from "react-router";
+import type { BadgeColors } from "~/lib/constants";
+import {
+	languageColors2,
+	repoUrls,
+	skillStyles,
+	skills,
+} from "~/lib/constants";
 import { hexToRgba } from "~/lib/utils";
-import GitHubCalendar from 'react-github-calendar';
+import { fetchGitHubProjects } from "~/services/github";
+import type { Route } from "./+types/cli";
+
+export async function loader({ context }: Route.LoaderArgs) {
+	const projects = await fetchGitHubProjects(
+		repoUrls,
+		context.cloudflare.env.GITHUB_TOKEN,
+	);
+
+	return { projects };
+}
 
 function TitleBox() {
-    return (<div id="title-box" box-="no-bottom" shear-="top">
-        <div className="header">
-            <span is-="badge" variant-="foreground0">Connor Young</span>
-        </div>
-        <div id="box-text">
-            Backend software developer focusing on scalable infrastructure for game services.
-            I have extensive experience building backend services, matchmaking systems,
-            and building game services for kubernetes.
-        </div>
-    </div>)
+	return (
+		<div className="title-box" box-="no-bottom" shear-="top">
+			<div className="header">
+				<span is-="badge" variant-="foreground0">
+					Connor Young
+				</span>
+			</div>
+			<div className="box-text">
+				Backend software developer focusing on scalable infrastructure for game
+				services. I have extensive experience building backend services,
+				matchmaking systems, and building game services for kubernetes.
+			</div>
+		</div>
+	);
 }
 
 function SkillsBox() {
-    return (<div id="skills-box" box-="no-bottom" shear-="top">
-        <div>
-            <span className="header" variant-="foreground0" is-="badge" cap-="triangle">Skills</span>
-        </div>
-        <div id="box-text">
-            <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => {
-                    const { base, text } = skillStyles[skill] ?? {
-                        base: "#14b8a6",
-                        text: "#ecfeff",
-                    };
+	return (
+		<div className="skills-box" box-="no-bottom" shear-="top">
+			<div>
+				<span
+					className="header"
+					variant-="foreground0"
+					is-="badge"
+					cap-="triangle"
+				>
+					Skills
+				</span>
+			</div>
+			<div className="box-text">
+				<div className="flex flex-wrap gap-2">
+					{skills.map((skill) => {
+						const { base, text } = skillStyles[skill] ?? {
+							base: "#14b8a6",
+							text: "#ecfeff",
+						};
 
-                    return (
-                        <span
-                            is-="badge"
-                            cap-="round"
-                            style={{
-                                "--badge-color": base,
-                                "--badge-text": text,
-                                borderColor: hexToRgba(base, 0.35),
-                            } as React.CSSProperties}
-                        >
-                            {skill}
-                        </span>
-                    );
-                })}
-            </div>
-        </div>
-    </div>)
+						return (
+							<span
+								key={skill}
+								is-="badge"
+								cap-="round"
+								style={
+									{
+										"--badge-color": base,
+										"--badge-text": text,
+										borderColor: hexToRgba(base, 0.35),
+									} as React.CSSProperties
+								}
+							>
+								{skill}
+							</span>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	);
 }
 
 function ContactBox() {
-    return (<div id="contact-box" box-="square" shear-="top">
-        <div>
-            <span className="header" variant-="foreground0" is-="badge" cap-="triangle">Contact Me</span>
-        </div>
-        <div id="box-text">
-            <div className="contact-icon"><span is-="badge" variant-="foreground2" cap-="slant-top slant-bottom">
-                <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>Email</span></div>
-            <div className="contact-icon"><span is-="badge" variant-="foreground2" cap-="slant-top slant-bottom">
-                <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        fillRule="evenodd"
-                        d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
-                        clipRule="evenodd"
-                    />
-                </svg>
-                Email</span>
-            </div>
-            <div className="contact-icon"><span is-="badge" variant-="foreground2" cap-="slant-top slant-bottom">
-                <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" />
-                </svg>Email</span></div>
-        </div>
-    </div>
-    )
+	return (
+		<div className="contact-box" box-="square" shear-="top">
+			<div>
+				<span
+					className="header"
+					variant-="foreground0"
+					is-="badge"
+					cap-="triangle"
+				>
+					Contact Me
+				</span>
+			</div>
+			<div className="box-text">
+				<div className="flex items-center gap-1">
+					<a
+						href="https://github.com/utfunderscore"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="transition-opacity hover:opacity-70"
+						aria-label="GitHub Profile"
+					>
+						<div className="relative">
+							<Octagon className="h-12 w-12 text-white fill-white absolute inset-0" />
+							<div className="relative z-10 flex items-center justify-center h-12 w-12">
+								<Github className="h-6 w-6 stroke-2 text-black" />
+							</div>
+						</div>
+					</a>
+					<a
+						href="mailto:connor@connoryoung.dev"
+						className="transition-opacity hover:opacity-70"
+						aria-label="Email Contact"
+					>
+						<div className="relative">
+							<Octagon className="h-12 w-12 text-white fill-white absolute inset-0" />
+							<div className="relative z-10 flex items-center justify-center h-12 w-12">
+								<Mails className="h-6 w-6 stroke-2 text-black" />
+							</div>
+						</div>
+					</a>
+					<a
+						href="https://linkedin.com/in/connoryoungdev"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="transition-opacity hover:opacity-70"
+						aria-label="LinkedIn Profile"
+					>
+						<div className="relative">
+							<Octagon className="h-12 w-12 text-white fill-white absolute inset-0" />
+							<div className="relative z-10 flex items-center justify-center h-12 w-12">
+								<Linkedin className="h-6 w-6 stroke-2 text-black" />
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function ProjectsPanel() {
+	const { projects } = useLoaderData<typeof loader>();
+
+	return (
+		<div className="blog-box" box-="square" shear-="top">
+			<div className="header">
+				<span is-="badge" variant-="foreground0">
+					Projects
+				</span>
+			</div>
+			<div className="space-y-4 inside-projects">
+				{projects.map((project) => {
+					type LabelToken = { label: string; colors?: BadgeColors | null };
+					const seen = new Set<string>();
+
+					const rawLabels: LabelToken[] = project.languages.map((language) => ({
+						label: language,
+						colors: languageColors2?.get(language.toLowerCase()) ?? null,
+					}));
+
+					const labels = rawLabels.filter(({ label }) => {
+						const key = label.toLowerCase();
+						if (seen.has(key)) return false;
+						seen.add(key);
+						return true;
+					});
+
+					return (
+						<div key={project.name} className="project">
+							<div
+								key={project.url}
+								className="space-y-1 border-l-4 pl-4"
+								style={{
+									borderLeftColor: labels[0]?.colors?.backgroundColor ?? "#000",
+								}}
+							>
+								<div className="space-y-1">
+									<div className="flex flex-wrap justify-between">
+										<p>
+											<code>{project.name}</code>
+										</p>
+										<span className="flex items-center gap-1">
+											<Star
+												className="h-3.5 w-3.5 opacity-70 flex-shrink-0"
+												aria-hidden="true"
+											/>
+											{project.stars.toLocaleString()}
+										</span>
+									</div>
+									{project.description}
+								</div>
+								{labels.length > 0 && (
+									<div className="flex flex-wrap gap-2">
+										{labels.map(({ label, colors }) => (
+											<span
+												key={label}
+												is-="badge"
+												cap-="round"
+												style={
+													{
+														"--badge-color": colors?.backgroundColor ?? "#000",
+														"--badge-text": colors?.textColor ?? "",
+													} as React.CSSProperties
+												}
+											>
+												{label}
+											</span>
+										))}
+									</div>
+								)}
+								<a
+									href={project.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-1 transition underline"
+								>
+									View on GitHub
+									<ExternalLink
+										className="h-4 w-4 flex-shrink-0"
+										aria-hidden="true"
+									/>
+								</a>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
 }
 
 function GitActivityBox() {
-    // const selectLastHalfYear = contributions => {
-    //     const currentYear = new Date().getFullYear();
-    //     const currentMonth = new Date().getMonth();
-    //     const shownMonths = 6;
-
-    //     return contributions.filter(activity => {
-    //         const date = new Date(activity.date);
-    //         const monthOfDay = date.getMonth();
-
-    //         return (
-    //             date.getFullYear() === currentYear &&
-    //             monthOfDay > currentMonth - shownMonths &&
-    //             monthOfDay <= currentMonth
-    //         );
-    //     });
-    // };
-
-    return (<div id="contact-box" box-="square" shear-="top">
-        <div>
-            <span className="header" variant-="foreground0" is-="badge" cap-="triangle">Activity</span>
-        </div>
-        <div id="box-text">
-            <GitHubCalendar
-                username="utfunderscore"
-                // transformData={selectLastHalfYear}
-                labels={{
-                    totalCount: '{{count}} contributions in the last half year',
-                }}
-            />
-        </div>
-    </div>
-    )
+	return (
+		<div className="contact-box" box-="square" shear-="top">
+			<div>
+				<span
+					className="header"
+					variant-="foreground0"
+					is-="badge"
+					cap-="triangle"
+				>
+					Activity
+				</span>
+			</div>
+			<div className="box-text">
+				<GitHubCalendar username="utfunderscore" />
+			</div>
+		</div>
+	);
 }
 
 export default function Home() {
-
-    return (
-        <div className="min-h-screen text-gray-100">
-            <div className="mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,_3fr)_minmax(0,_4fr)_minmax(0,_3fr)]">
-                <div id="island1">
-                    <TitleBox />
-                    <SkillsBox />
-                    <ContactBox />
-                    <GitActivityBox />
-                </div>
-                <div id="island2">
-                    <div id="blog-box" box-="square" shear-="top">
-                        <div className="header">
-                            <span is-="badge" variant-="foreground0">Blog</span>
-                        </div>
-                        <div id="box-text">
-                            Backend software developer focusing on scalable infrastructure for game services.
-                            I have extensive experience building backend services, matchmaking systems,
-                            and building game services for kubernetes.
-                        </div>
-                    </div>
-                </div>
-                <div id="island1">
-                    <TitleBox />
-                    <SkillsBox />
-                    <ContactBox />
-                </div>
-            </div>
-        </div>
-
-    );
-
+	return (
+		<div className="min-h-screen text-gray-100">
+			<div className="mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,_3fr)_minmax(0,_4fr)_minmax(0,_3fr)]">
+				<div className="island1">
+					<TitleBox />
+					<SkillsBox />
+					<ContactBox />
+					<GitActivityBox />
+				</div>
+				<div className="island2">
+					<div className="blog-box" box-="square" shear-="top">
+						<div className="header">
+							<span is-="badge" variant-="foreground0">
+								Blog
+							</span>
+						</div>
+						<div className="box-text">
+							Backend software developer focusing on scalable infrastructure for
+							game services. I have extensive experience building backend
+							services, matchmaking systems, and building game services for
+							kubernetes.
+						</div>
+					</div>
+				</div>
+				<div className="island3">
+					<ProjectsPanel />
+				</div>
+			</div>
+		</div>
+	);
 }

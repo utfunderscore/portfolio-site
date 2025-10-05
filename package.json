@@ -1,38 +1,42 @@
 {
-  "name": "portfolio2",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "react-router build",
-    "cf-typegen": "wrangler types",
-    "deploy": "npm run build && wrangler deploy",
-    "dev": "react-router dev",
-    "postinstall": "npm run cf-typegen",
-    "preview": "npm run build && vite preview",
-    "typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
-  },
-  "dependencies": {
-    "@webtui/css": "^0.1.5",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "isbot": "^5.1.31",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-github-calendar": "^4.5.10",
-    "react-router": "^7.9.2",
-    "tailwind-merge": "^3.3.1"
-  },
-  "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.13.5",
-    "@react-router/dev": "^7.9.2",
-    "@tailwindcss/vite": "^4.1.13",
-    "@types/node": "^22",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.7",
-    "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.42.0"
-  }
+	"name": "portfolio2",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "react-router build",
+		"cf-typegen": "wrangler types",
+		"check": "biome check .",
+		"check:fix": "biome check --write .",
+		"deploy": "npm run build && wrangler deploy",
+		"dev": "react-router dev",
+		"postinstall": "npm run cf-typegen",
+		"preview": "npm run build && vite preview",
+		"typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
+	},
+	"dependencies": {
+		"@webtui/css": "^0.1.5",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"isbot": "^5.1.31",
+		"lucide-react": "^0.544.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"react-github-calendar": "^4.5.10",
+		"react-router": "^7.9.2",
+		"tailwind-merge": "^3.3.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.5",
+		"@cloudflare/vite-plugin": "^1.13.5",
+		"@react-router/dev": "^7.9.2",
+		"@tailwindcss/vite": "^4.1.13",
+		"@types/node": "^22",
+		"@types/react": "^19.1.13",
+		"@types/react-dom": "^19.1.9",
+		"tailwindcss": "^4.1.13",
+		"typescript": "^5.9.2",
+		"vite": "^7.1.7",
+		"vite-tsconfig-paths": "^5.1.4",
+		"wrangler": "^4.42.0"
+	}
 }
