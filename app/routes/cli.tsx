@@ -121,7 +121,7 @@ function ContactBox() {
 						</div>
 					</a>
 					<a
-						href="mailto:connor@connoryoung.dev"
+						href="mailto:connor675756@gmail.com"
 						className="transition-opacity hover:opacity-70"
 						aria-label="Email Contact"
 					>
@@ -133,7 +133,7 @@ function ContactBox() {
 						</div>
 					</a>
 					<a
-						href="https://linkedin.com/in/connoryoungdev"
+						href="https://linkedin.com/in/connor"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="transition-opacity hover:opacity-70"
