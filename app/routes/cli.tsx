@@ -15,6 +15,7 @@ import {
 	repoUrls,
 	skillStyles,
 	skills,
+	blogPosts,
 } from "~/lib/constants";
 import { hexToRgba } from "~/lib/utils";
 import { fetchGitHubProjects } from "~/services/github";
@@ -262,6 +263,63 @@ function GitActivityBox() {
 	);
 }
 
+function BlogBox() {
+	return (
+		<div>
+			{blogPosts.map((post) => {
+				const date = new Date(post.date);
+				const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
+				return (
+					<div key={post.slug} className="py-3">
+						<article box-="square" shear-="both">
+							<div className="header">
+								<span>{post.title}</span>
+							</div>
+							<div className="px-[1ch]">{post.summary}</div>
+							<div className="flex flex-wrap px-[0.5ch]">
+								{post.tags.map((tag) => {
+									const { base, text } = skillStyles[tag] ?? {
+										base: "#14b8a6",
+										text: "#ecfeff",
+									};
+
+									return (
+										<div key={tag} className="py-[1ch] px-1">
+											<span
+												key={tag}
+												is-="badge"
+												cap-="round"
+												className=""
+												style={
+													{
+														"--badge-color": base,
+														"--badge-text": text,
+														padding: "0px",
+													} as React.CSSProperties
+												}
+											>
+												{tag}
+											</span>
+										</div>
+									);
+								})}
+							</div>
+							<div className="header bottom">
+								<span>
+									<p>
+										<a href={`/blog/${post.slug}`}>Click to read</a>
+									</p>
+								</span>
+								<span>{formattedDate}</span>
+							</div>
+						</article>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
 export default function Home() {
 	return (
 		<div className="min-h-screen text-gray-100">
@@ -275,18 +333,19 @@ export default function Home() {
 				<div className="island2">
 					<div className="blog-box" box-="square" shear-="top">
 						<div className="header">
-							<span is-="badge" variant-="foreground0">
+							<span
+								is-="badge"
+								variant-="foreground0"
+								className="flex justify-center"
+							>
 								Blog
 							</span>
 						</div>
-						<div className="box-text">
-							Backend software developer focusing on scalable infrastructure for
-							game services. I have extensive experience building backend
-							services, matchmaking systems, and building game services for
-							kubernetes.
-						</div>
+
+						<BlogBox />
 					</div>
 				</div>
+
 				<div className="island3">
 					<ProjectsPanel />
 				</div>

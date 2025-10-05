@@ -5,8 +5,8 @@
 @import "@webtui/css/utils/box.css";
 @import "@webtui/css/components/badge.css";
 @import "@webtui/css/components/separator.css";
-@import "tailwindcss";
 @import "@webtui/css/components/typography.css";
+@import "tailwindcss";
 
 /* body {
     background-color: black;
@@ -30,100 +30,6 @@
 			border-left: solid var(--box-border-width) var(--box-border-color);
 			border-right: solid var(--box-border-width) var(--box-border-color);
 			z-index: -1;
-		}
-
-		/* Apply border radius to the inner and outer (if present) border */
-		&[box-="round"] {
-			&::before {
-				border-radius: var(--box-rounded-radius);
-			}
-
-			&::after {
-				border-radius: calc(var(--box-rounded-radius) + 2px);
-			}
-		}
-
-		/* Adds the second border to the element */
-		&[box-="double"] {
-			&::before {
-				border-width: var(--box-double-border-width);
-			}
-
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				translate: -50% -50%;
-				width: calc(100% - 1ch + var(--box-double-border-width) * 2);
-				height: calc(100% - 1lh + var(--box-double-border-width) * 2);
-				border: solid var(--box-double-border-width) var(--box-border-color);
-				z-index: -1;
-			}
-		}
-
-		/* Containment Variants */
-		&[shear-="both"] {
-			padding-top: 0;
-			padding-bottom: 0;
-		}
-
-		&[shear-="top"] {
-			padding-top: 0;
-		}
-
-		&[shear-="bottom"] {
-			padding-bottom: 0;
-		}
-	}
-
-	[box-="no-left"] {
-		position: relative;
-		isolation: isolate;
-		padding: 1lh 1ch;
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			translate: -50% -50%;
-			width: calc(100% - 1ch - var(--box-border-width));
-			height: calc(100% - 1lh - var(--box-border-width));
-			border-top: solid var(--box-border-width) var(--box-border-color);
-			border-bottom: solid var(--box-border-width) var(--box-border-color);
-			border-right: solid var(--box-border-width) var(--box-border-color);
-			z-index: -1;
-		}
-
-		/* Apply border radius to the inner and outer (if present) border */
-		&[box-="round"] {
-			&::before {
-				border-radius: var(--box-rounded-radius);
-			}
-
-			&::after {
-				border-radius: calc(var(--box-rounded-radius) + 2px);
-			}
-		}
-
-		/* Adds the second border to the element */
-		&[box-="double"] {
-			&::before {
-				border-width: var(--box-double-border-width);
-			}
-
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				translate: -50% -50%;
-				width: calc(100% - 1ch + var(--box-double-border-width) * 2);
-				height: calc(100% - 1lh + var(--box-double-border-width) * 2);
-				border: solid var(--box-double-border-width) var(--box-border-color);
-				z-index: -1;
-			}
 		}
 
 		/* Containment Variants */
@@ -202,6 +108,32 @@
 			padding-top: 1ch;
 		}
 	}
+}
+
+.island2 {
+	display: flex;
+	flex-direction: column;
+
+	span {
+		background-color: var(--background0);
+		padding: 0 1ch;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.blog-title {
+		/* margin-left: 1ch; */
+		/* z-index: 1;
+		margin-bottom: -1.9ch; */
+	}
+
+	/* .blog-seperator {
+		margin-top: -2ch;
+	} */
+
 }
 
 .hexagon {
