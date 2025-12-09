@@ -17,26 +17,26 @@
 		"@webtui/css": "^0.1.5",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
-		"isbot": "^5.1.31",
+		"isbot": "^5.1.32",
 		"lucide-react": "^0.544.0",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1",
-		"react-github-calendar": "^4.5.10",
-		"react-router": "^7.9.2",
-		"tailwind-merge": "^3.3.1"
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1",
+		"react-github-calendar": "^4.5.11",
+		"react-router": "^7.10.1",
+		"tailwind-merge": "^3.4.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.2.5",
-		"@cloudflare/vite-plugin": "^1.13.5",
-		"@react-router/dev": "^7.9.2",
-		"@tailwindcss/vite": "^4.1.13",
-		"@types/node": "^22",
-		"@types/react": "^19.1.13",
-		"@types/react-dom": "^19.1.9",
-		"tailwindcss": "^4.1.13",
-		"typescript": "^5.9.2",
-		"vite": "^7.1.7",
+		"@biomejs/biome": "^2.3.8",
+		"@cloudflare/vite-plugin": "^1.17.0",
+		"@react-router/dev": "^7.10.1",
+		"@tailwindcss/vite": "^4.1.17",
+		"@types/node": "^22.19.2",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"tailwindcss": "^4.1.17",
+		"typescript": "^5.9.3",
+		"vite": "^7.2.7",
 		"vite-tsconfig-paths": "^5.1.4",
-		"wrangler": "^4.42.0"
+		"wrangler": "^4.53.0"
 	}
 }
