@@ -4,6 +4,7 @@ export const repoUrls = [
 	"https://github.com/utfunderscore/hermes",
 	"https://github.com/utfunderscore/loadbalancer-rs",
 	"https://github.com/utfunderscore/game",
+	"https://github.com/utfunderscore/subtitle-task-queue/",
 ];
 
 export const languageColors: Record<string, string> = {
